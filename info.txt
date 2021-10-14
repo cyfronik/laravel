@@ -1,0 +1,40 @@
+https://getcomposer.org/download/
+composer dump-autoload
+
+# node.js dodawanie repozytorium i aktualizacja:
+su -c 'curl -sL https://deb.nodesource.com/setup_14.x | bash -'
+
+
+composer require laravel/ui
+php artisan ui vue --auth
+
+---------------------
+ php artisan make:middleware CheckRole
+
+ protected $routeMiddleware = [
+    'roles' => \App\Http\Middleware\CheckRole::class,
+ ];
+
+---------------------
+
+https://ralphjsmit.com/laravel-validation/
+ php artisan make:request PagesRequest
+
+ public function store(PagesRequest $request)
+
+ public function rules()
+ {
+     return [
+         'title' =>  'required|max:5',
+         'content' => 'required'
+     ];
+ }
+
+ -----------------------
+ class Pages extends Model
+ {
+     use HasFactory;
+     protected $fillable = [
+         'title', 'description',
+     ];
+ }
